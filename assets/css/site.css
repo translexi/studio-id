@@ -352,6 +352,7 @@ body.hal-hero .nav:not(.nav--padat) .nav__burger span{background:#fff}
 .silang__kotak h2{font-size:clamp(1.2rem,1.05rem + .7vw,1.6rem);margin-bottom:.3em}
 .silang__kotak p{margin:0;color:var(--abu-teks);font-size:.94rem;max-width:58ch}
 .silang__kotak>div{flex:1 1 320px}
+.silang__aksi{display:flex;flex-wrap:wrap;gap:.7rem}
 
 /* ---------- CTA band ---------- */
 .cta-band__sub{font-size:clamp(1rem,.95rem + .35vw,1.15rem);color:rgba(255,255,255,.9);
@@ -391,7 +392,18 @@ body.hal-hero .nav:not(.nav--padat) .nav__burger span{background:#fff}
 .kaki__induk p{margin-bottom:1rem;line-height:1.55}
 .kaki__induk .tombol--garis{border-color:rgba(255,255,255,.55);color:#fff}
 .kaki__induk .tombol--garis:hover{background:#fff;color:var(--arang);border-color:#fff}
-.kaki__legal{margin-top:clamp(2.5rem,5vw,3.5rem);padding-block:1.6rem;
+.kaki__keluarga{margin-top:clamp(2.2rem,4.5vw,3.2rem);padding-top:1.6rem;
+  border-top:1px solid rgba(255,255,255,.14)}
+.kaki__keluarga .eyebrow{color:rgba(255,255,255,.5);margin-bottom:.7rem}
+.kaki__keluarga ul{display:flex;flex-wrap:wrap;gap:.5rem clamp(1.2rem,3vw,2.4rem)}
+.kaki__keluarga a{color:rgba(255,255,255,.85);font-size:.88rem;font-weight:600;
+  position:relative;transition:color .25s}
+.kaki__keluarga a::after{content:'';position:absolute;left:0;bottom:-3px;height:1.5px;width:100%;
+  background:var(--api);transform:scaleX(0);transform-origin:right;
+  transition:transform .35s var(--ease)}
+.kaki__keluarga a:hover{color:#fff}
+.kaki__keluarga a:hover::after{transform:scaleX(1);transform-origin:left}
+.kaki__legal{margin-top:1.4rem;padding-block:1.6rem;
   border-top:1px solid rgba(255,255,255,.14)}
 .kaki__legal p{margin:0;font-size:.8rem;color:rgba(255,255,255,.5)}
 
@@ -462,6 +474,7 @@ body.hal-hero .nav:not(.nav--padat) .nav__burger span{background:#fff}
   .divisi-kartu__kaki{flex-direction:column;align-items:flex-start}
   .divisi-kartu__kaki .tombol{width:100%}
   .silang__kotak{flex-direction:column;align-items:flex-start}
+  .silang__aksi{width:100%;flex-direction:column}
   .silang__kotak .tombol{width:100%}
   .kontak__qr{flex-direction:column;align-items:flex-start}
   .kaki__grid{grid-template-columns:1fr;gap:2rem}
