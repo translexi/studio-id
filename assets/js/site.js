@@ -9,6 +9,7 @@
   const nav = document.getElementById('nav');
   const menu = document.getElementById('menu');
   const burger = document.getElementById('burger');
+  const heroHal = document.body.classList.contains('hal-hero');
 
   const setTinggi = () => {
     if (nav) document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
@@ -21,20 +22,31 @@
     if (tick) return;
     tick = true;
     requestAnimationFrame(() => {
-      nav?.classList.toggle('nav--gulir', scrollY > 12);
+      const gulir = scrollY > 12;
+      nav?.classList.toggle('nav--gulir', gulir);
+      // Di halaman ber-hero navbar melayang transparan; ia HARUS memadat begitu
+      // digulir atau saat menu mobile terbuka, kalau tidak teks putihnya jatuh
+      // di atas latar putih.
+      if (heroHal) nav?.classList.toggle('nav--padat', gulir || menu?.classList.contains('buka'));
       tick = false;
     });
   }, { passive: true });
 
+  const padatkan = () => {
+    if (heroHal) nav?.classList.toggle('nav--padat',
+      scrollY > 12 || menu?.classList.contains('buka'));
+  };
   burger?.addEventListener('click', () => {
     const buka = menu.classList.toggle('buka');
     burger.setAttribute('aria-expanded', String(buka));
+    padatkan();
     setTinggi();
   });
   menu?.addEventListener('click', e => {
     if (e.target.closest('a')) {
       menu.classList.remove('buka');
       burger?.setAttribute('aria-expanded', 'false');
+      padatkan();
     }
   });
   addEventListener('keydown', e => {
