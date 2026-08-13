@@ -387,6 +387,10 @@ body.hal-hero .nav:not(.nav--padat) .nav__burger span{background:#fff}
 .kaki__grid{display:grid;grid-template-columns:1.5fr .8fr .8fr 1.2fr;gap:clamp(1.8rem,4vw,3rem)}
 .kaki__brand img{height:38px;width:auto;margin-bottom:1.2rem}
 .kaki__brand p{max-width:38ch;line-height:1.6}
+.kaki__kontak{margin-top:1.1rem;display:flex;flex-direction:column;gap:.35rem;font-size:.88rem}
+.kaki__kontak a{color:#fff;font-weight:600;transition:color .25s}
+.kaki__kontak a:hover{color:var(--api-oranye)}
+.kaki__kontak li:last-child{color:rgba(255,255,255,.6)}
 .kaki__kolom{display:flex;flex-direction:column;align-items:flex-start;gap:.5rem}
 .kaki__kolom .eyebrow{color:rgba(255,255,255,.5);margin:0 0 .3rem}
 .kaki__kolom .eyebrow:not(:first-child){margin-top:1rem}
