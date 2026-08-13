@@ -81,6 +81,16 @@ ol,ul{margin:0;padding:0;list-style:none}
 .nav__menu>a:not(.tombol):hover::after,.nav__menu>a[aria-current]::after{transform:scaleX(1);transform-origin:left}
 .nav__menu>a[aria-current]{color:var(--api-merah)}
 .nav__cta{padding:.6em 1.25em;font-size:.86rem}
+/* Pemilih bahasa: menaut ke halaman padanan di domain sebelah (lihat alt_id/alt_en). */
+.bahasa{display:inline-flex;align-items:center;border:1.5px solid var(--abu-garis);
+  border-radius:99px;overflow:hidden;flex:none}
+.bahasa a{padding:.4em .78em;font-size:.72rem;font-weight:700;letter-spacing:.08em;
+  color:var(--abu-teks);line-height:1.4;transition:background-color .25s var(--ease),color .25s var(--ease)}
+.bahasa a+a{border-left:1.5px solid var(--abu-garis)}
+.bahasa a:hover{color:var(--api-merah);background:rgba(194,63,45,.07)}
+.bahasa a[aria-current]{background-image:var(--api);color:#fff}
+.bahasa a[aria-current]:hover{color:#fff}
+
 .nav__burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;
   background:none;border:0;cursor:pointer;padding:0}
 .nav__burger span{display:block;height:2px;width:24px;background:var(--tinta);border-radius:2px;
@@ -354,6 +364,8 @@ ol,ul{margin:0;padding:0;list-style:none}
   .nav__menu>a:not(.tombol){padding:.95em 0;border-bottom:1px solid var(--abu-garis);font-size:1.05rem}
   .nav__menu>a:not(.tombol)::after{display:none}
   .nav__cta{margin-top:1.1rem;justify-content:center;padding:.9em 1.5em;font-size:.95rem}
+  .bahasa{align-self:center;margin-top:1.1rem}
+  .bahasa a{padding:.62em 1.15em;font-size:.8rem}
 
   .hero{min-height:auto;padding-top:clamp(3rem,12vw,4.5rem)}
   .hero__sub{font-size:1rem}
