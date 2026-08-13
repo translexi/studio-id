@@ -351,8 +351,11 @@ body.hal-hero .nav:not(.nav--padat) .nav__burger span{background:#fff}
   gap:1.5rem;padding:clamp(1.6rem,3vw,2.4rem);background:var(--kertas-hangat);border-radius:var(--r)}
 .silang__kotak h2{font-size:clamp(1.2rem,1.05rem + .7vw,1.6rem);margin-bottom:.3em}
 .silang__kotak p{margin:0;color:var(--abu-teks);font-size:.94rem;max-width:58ch}
-.silang__kotak>div{flex:1 1 320px}
-.silang__aksi{display:flex;flex-wrap:wrap;gap:.7rem}
+/* HANYA blok teks yang boleh melar. Sebelumnya aturannya `>div`, dan karena
+   pembungkus tombol juga sebuah div, ia ikut melar lalu meninggalkan lubang
+   selebar 144px di kanan tombol. */
+.silang__kotak>div:first-child{flex:1 1 320px}
+.silang__aksi{display:flex;flex-wrap:wrap;gap:.7rem;flex:0 0 auto}
 
 /* ---------- CTA band ---------- */
 .cta-band__sub{font-size:clamp(1rem,.95rem + .35vw,1.15rem);color:rgba(255,255,255,.9);
