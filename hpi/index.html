@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Preview Instagram Reels @hpipusat · Translexi Studio</title>
+<meta name="description" content="Visualisasi interaktif demo video Instagram Reels khusus untuk Himpunan Penerjemah Indonesia oleh Translexi Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg-core: #0a0b0e;
+  --bg-card: #13161c;
+  --ig-dark: #000000;
+  --ig-sidebar: #121212;
+  --ig-border: #262626;
+  --ig-hover: #1a1a1a;
+  --ig-text: #f5f5f5;
+  --ig-muted: #a8a8a8;
+  --ig-blue: #0095f6;
+  --ig-red: #ff3040;
+  
+  --studio-gold: #d5702e;
+  --studio-red: #c23f2d;
+  --studio-api: linear-gradient(135deg, #d5702e 0%, #c23f2d 50%, #b21d60 100%);
+  
+  --text-main: #f0f2f5;
+  --text-muted: #9ba1a6;
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  
+  --font-heading: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-text: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-core);
+  color: var(--text-main);
+  font-family: var(--font-text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------------- HEADER BAR ---------------- */
+.header-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 11, 14, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 12px 24px;
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brand-area {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-logo-link {
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.brand-logo-link:hover {
+  opacity: 0.85;
+}
+
+.translexi-logo {
+  height: 38px;
+  width: auto;
+  display: block;
+}
+
+.header-divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.client-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 4px 12px 4px 6px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #f5f5f5;
+}
+
+.client-tag-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Toggle Switcher Mode */
+.view-switch {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 3px;
+  gap: 4px;
+}
+
+.switch-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.switch-btn.active {
+  background: var(--studio-api);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(194, 63, 45, 0.35);
+}
+
+.switch-btn:hover:not(.active) {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* ---------------- MAIN SHOWCASE AREA ---------------- */
+.showcase-section {
+  flex: 1;
+  padding: 24px 16px 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.preview-container {
+  width: 100%;
+  max-width: 1060px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* =======================================================
+   MODE 1: MOBILE INSTAGRAM REELS (Faithful to Screenshot 2)
+   ======================================================= */
+.view-mobile {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.phone-mockup {
+  width: 390px;
+  height: 780px;
+  background: #000;
+  border-radius: 48px;
+  border: 12px solid #2d3036;
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.85),
+              0 0 0 1px rgba(255, 255, 255, 0.12),
+              0 0 40px rgba(213, 112, 46, 0.15);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* iPhone Dynamic Island */
+.phone-island {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 104px;
+  height: 26px;
+  background: #000;
+  border-radius: 20px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 9px;
+  box-shadow: 0 0 1px rgba(255,255,255,0.2);
+}
+
+.phone-island .cam {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #1c2738 0%, #0d1219 70%);
+  box-shadow: inset 0 0 2px rgba(0, 100, 255, 0.4);
+}
+
+/* Status Bar */
+.phone-status-bar {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  padding: 0 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  z-index: 45;
+  pointer-events: none;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+}
+
+.phone-status-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+}
+
+.battery-pill {
+  width: 20px;
+  height: 10px;
+  border: 1.5px solid #fff;
+  border-radius: 3px;
+  padding: 1px;
+  position: relative;
+}
+
+.battery-pill::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: 2px;
+  width: 2px;
+  height: 4px;
+  background: #fff;
+  border-radius: 0 1px 1px 0;
+}
+
+.battery-fill {
+  width: 57%;
+  height: 100%;
+  background: #fff;
+  border-radius: 1px;
+}
+
+/* Video Stage */
+.mobile-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+  user-select: none;
+  cursor: pointer;
+}
+
+.reel-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Dark Gradient Scrim */
+.mobile-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35) 0%,
+    transparent 18%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.35) 65%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  pointer-events: none;
+}
+
+/* Heart Burst Animation */
+.big-heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 90px;
+  height: 90px;
+  fill: #ff3040;
+  filter: drop-shadow(0 4px 15px rgba(255, 48, 64, 0.6));
+  pointer-events: none;
+  z-index: 35;
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.25s ease;
+  opacity: 0;
+}
+
+.big-heart.animate {
+  transform: translate(-50%, -50%) scale(1.2);
+  opacity: 1;
+}
+
+/* Sound Indicator - MOVED TO TOP-LEFT TO NEVER COVER TOP-RIGHT WATERMARK */
+.sound-indicator-mobile {
+  position: absolute;
+  top: 46px;
+  left: 16px;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 999px;
+  padding: 5px 12px;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 30;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sound-indicator-mobile:hover {
+  background: rgba(0, 0, 0, 0.85);
+  transform: scale(1.04);
+}
+
+.sound-indicator-mobile.is-muted {
+  background: rgba(194, 63, 45, 0.88);
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 14px rgba(194, 63, 45, 0.6);
+}
+
+/* Mobile Action Rail */
+.mobile-actions {
+  position: absolute;
+  right: 12px;
+  bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  z-index: 25;
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #fff;
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  border: none;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  transition: transform 0.15s ease;
+}
+
+.action-item:active {
+  transform: scale(0.85);
+}
+
+.action-icon-wrap {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-item.liked .heart-icon {
+  fill: #ff3040;
+  stroke: #ff3040;
+  animation: heart-bounce 0.3s ease;
+}
+
+@keyframes heart-bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* Spinning Music Disc */
+.music-disc {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  animation: disc-spin 4s linear infinite;
+  margin-top: 2px;
+}
+
+.music-disc img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes disc-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Mobile Info Overlay */
+.mobile-info-overlay {
+  position: absolute;
+  left: 14px;
+  right: 74px;
+  bottom: 60px;
+  z-index: 20;
+  color: #fff;
+  font-family: var(--font-ui);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+.mobile-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.author-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid #fff;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.author-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.author-name {
+  font-weight: 700;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.badge-verified-inline {
+  width: 13px;
+  height: 13px;
+  fill: #0095f6;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.btn-follow {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+/* Expandable Caption */
+.mobile-caption {
+  font-size: 12px;
+  line-height: 1.38;
+  margin-bottom: 6px;
+}
+
+.caption-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.caption-clamp.expanded {
+  display: block;
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.btn-more {
+  color: var(--ig-muted);
+  cursor: pointer;
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+/* Audio Ticker */
+.mobile-ticker {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ticker-text {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 12s linear infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Video Progress Bar */
+.reel-progress-bar {
+  position: absolute;
+  bottom: 46px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.25);
+  z-index: 30;
+}
+
+.reel-progress-fill {
+  height: 100%;
+  background: #fff;
+  width: 0%;
+}
+
+/* Bottom Nav Bar */
+.mobile-bottom-nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 46px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 10px;
+  z-index: 35;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-icon-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.nav-avatar-mini {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.nav-avatar-mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+/* =======================================================
+   MODE 2: DESKTOP INSTAGRAM POST (Faithful to Screenshot 1)
+   ======================================================= */
+.view-desktop {
+  display: none;
+  width: 100%;
+  justify-content: center;
+}
+
+.ig-modal {
+  display: flex;
+  background: var(--ig-dark);
+  border: 1px solid var(--ig-border);
+  border-radius: 12px;
+  overflow: hidden;
+  height: 680px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(213, 112, 46, 0.12);
+}
+
+/* Left Media Container (Strict 9:16 Aspect Ratio) */
+.modal-media {
+  flex: 0 0 calc(680px * 9 / 16);
+  width: calc(680px * 9 / 16);
+  height: 680px;
+  aspect-ratio: 9 / 16;
+  background: #000;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.desktop-video {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+  display: block;
+  background: #000;
+}
+
+/* Volume Button on Desktop Video */
+.volume-btn {
+  position: absolute;
+  bottom: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.2s ease;
+}
+
+.volume-btn:hover {
+  transform: scale(1.08);
+  background: rgba(0, 0, 0, 0.9);
+}
+
+/* Right Sidebar */
+.modal-sidebar {
+  width: 380px;
+  flex: 0 0 380px;
+  background: var(--ig-sidebar);
+  border-left: 1px solid var(--ig-border);
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-ui);
+}
+
+/* Header */
+.sidebar-header {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--ig-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-user-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--ig-border);
+  overflow: hidden;
+}
+
+.header-user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.header-user-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.header-user-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ig-text);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.header-meta-tags {
+  font-size: 12px;
+  color: var(--ig-muted);
+}
+
+.sidebar-dots-btn {
+  background: none;
+  border: none;
+  color: var(--ig-text);
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* Body / Comments */
+.sidebar-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.comment-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.comment-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.comment-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+.comment-text {
+  color: var(--ig-text);
+}
+
+.comment-username {
+  font-weight: 700;
+  color: #fff;
+  margin-right: 6px;
+}
+
+.comment-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--ig-muted);
+  margin-top: 6px;
+}
+
+.comment-ref-box {
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 2px solid var(--ig-blue);
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: #c9d1d9;
+}
+
+.comment-ref-box a {
+  color: var(--ig-blue);
+  text-decoration: underline;
+}
+
+/* Footer / Actions */
+.sidebar-footer {
+  border-top: 1px solid var(--ig-border);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.insights-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+}
+
+.link-insights {
+  color: var(--ig-text);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-boost {
+  background: var(--ig-blue);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.post-action-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icons-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ig-icon-btn {
+  background: none;
+  border: none;
+  color: var(--ig-text);
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+.ig-icon-btn:active {
+  transform: scale(0.9);
+}
+
+.ig-icon-btn.liked .heart-icon {
+  fill: #ff3040;
+  stroke: #ff3040;
+  animation: heart-bounce 0.3s ease;
+}
+
+.likes-row {
+  font-size: 14px;
+  color: var(--ig-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.likes-avatars-cluster {
+  display: inline-flex;
+  margin-right: 4px;
+}
+
+.cluster-avatar {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ig-sidebar);
+  margin-right: -6px;
+}
+
+.timestamp-text {
+  font-size: 11px;
+  color: var(--ig-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Comment Input Box */
+.add-comment-row {
+  border-top: 1px solid var(--ig-border);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.emoji-btn {
+  background: none;
+  border: none;
+  color: var(--ig-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.comment-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
+
+.comment-input::placeholder {
+  color: var(--ig-muted);
+}
+
+.btn-post-comment {
+  background: none;
+  border: none;
+  color: var(--ig-blue);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  opacity: 0.4;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.btn-post-comment.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .view-switch {
+    width: 100%;
+    justify-content: center;
+  }
+  .switch-btn {
+    flex: 1;
+    justify-content: center;
+  }
+  .phone-mockup {
+    width: 100%;
+    max-width: 360px;
+    height: 720px;
+    border-radius: 36px;
+  }
+  .ig-modal {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+    max-width: 380px;
+  }
+  .modal-media {
+    width: 100%;
+    flex: none;
+    aspect-ratio: 9 / 16;
+    height: auto;
+  }
+  .modal-sidebar {
+    width: 100%;
+    flex: none;
+    border-left: 0;
+    border-top: 1px solid var(--ig-border);
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== HEADER ==================== -->
+<header class="header-bar">
+  <div class="header-inner">
+    <div class="brand-area">
+      <a href="/" class="brand-logo-link" title="Translexi Studio">
+        <img src="logo.webp" alt="Translexi Studio" class="translexi-logo" width="160" height="62">
+      </a>
+      <div class="header-divider"></div>
+      <div class="client-tag">
+        <img src="hpi_avatar.png" alt="HPI" class="client-tag-avatar">
+        <span>@hpipusat</span>
+      </div>
+    </div>
+
+    <!-- Toggle Device Mode -->
+    <div class="view-switch" role="tablist" aria-label="Pilih Mode Tampilan Instagram">
+      <button id="btn-mode-mobile" class="switch-btn active" role="tab" aria-selected="true" onclick="switchMode('mobile')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+        Mobile
+      </button>
+      <button id="btn-mode-desktop" class="switch-btn" role="tab" aria-selected="false" onclick="switchMode('desktop')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        Desktop
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== MAIN PREVIEW SECTION ==================== -->
+<main class="showcase-section">
+  <div class="preview-container">
+    
+    <!-- ==============================================
+         MODE 1: MOBILE INSTAGRAM REELS (PHONE MOCKUP)
+         ============================================== -->
+    <div id="wrapper-mobile" class="view-mobile">
+      <div class="phone-mockup" id="phoneMockup">
+        
+        <!-- iPhone Island & Status Bar -->
+        <div class="phone-island">
+          <div class="cam"></div>
+        </div>
+        <div class="phone-status-bar">
+          <span>13.06</span>
+          <div class="phone-status-right">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 20.3c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l2.69-.62C9.93 21.26 11.88 22 14 22c4.97 0 9-4.03 9-9s-4.03-9-9-9z" opacity="0.3"></path><path d="M12 6c-3.31 0-6 2.69-6 6 0 1.34.44 2.58 1.19 3.58l-.4 1.83 1.83-.4c1 .75 2.24 1.19 3.38 1.19 3.31 0 6-2.69 6-6s-2.69-6-6-6z"></path></svg>
+            <span>57%</span>
+            <div class="battery-pill"><div class="battery-fill"></div></div>
+          </div>
+        </div>
+
+        <!-- Video Stage (Strict 9:16) -->
+        <div class="mobile-stage" onclick="handleVideoTap(event, 'mobile')">
+          <video id="video-mobile" class="reel-video" src="hpi_reel.webm" poster="poster.jpg" loop playsinline preload="auto"></video>
+          <div class="mobile-scrim"></div>
+
+          <!-- Central Double-tap Heart -->
+          <svg id="heart-pop-mobile" class="big-heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+
+          <!-- Top-Left Sound Toggle (NEVER COVERS TOP-RIGHT WATERMARK) -->
+          <button id="sound-indicator-mobile" class="sound-indicator-mobile" onclick="toggleAllSound(); event.stopPropagation();" aria-label="Beralih suara">
+            <svg id="mobile-sound-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+            <span id="mobile-sound-text">Suara ON</span>
+          </button>
+
+          <!-- Right Action Bar (Reels Icons) -->
+          <div class="mobile-actions" onclick="event.stopPropagation()">
+            <!-- Heart Like -->
+            <button id="like-btn-mobile" class="action-item" onclick="toggleLike()" aria-label="Suka video ini">
+              <div class="action-icon-wrap">
+                <svg class="heart-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+              </div>
+              <span id="like-count-mobile">18,7 rb</span>
+            </button>
+
+            <!-- Comment Bubble -->
+            <button class="action-item" onclick="expandCaption()" aria-label="Komentar">
+              <div class="action-icon-wrap">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              </div>
+              <span>214</span>
+            </button>
+
+            <!-- Repost / Remix -->
+            <button class="action-item" aria-label="Remix / Bagikan ulang">
+              <div class="action-icon-wrap">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+              </div>
+              <span>1.290</span>
+            </button>
+
+            <!-- Paper Plane Share -->
+            <button class="action-item" aria-label="Kirim ke teman">
+              <div class="action-icon-wrap">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+              </div>
+              <span>2.017</span>
+            </button>
+
+            <!-- Sound Toggle in Action Rail -->
+            <button id="action-sound-mobile" class="action-item" onclick="toggleAllSound(); event.stopPropagation();" aria-label="Beralih suara">
+              <div class="action-icon-wrap">
+                <svg id="rail-sound-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+              </div>
+              <span id="rail-sound-text">Suara</span>
+            </button>
+
+            <!-- Dots -->
+            <button class="action-item" aria-label="Menu pilihan">
+              <div class="action-icon-wrap">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="5" cy="12" r="2"></circle></svg>
+              </div>
+            </button>
+
+            <!-- Audio Disc -->
+            <div class="music-disc" title="Audio Resmi HPI" onclick="toggleAllSound(); event.stopPropagation();">
+              <img src="hpi_avatar.png" alt="Audio Disc HPI">
+            </div>
+          </div>
+
+          <!-- Bottom Overlay: Author & Storytelling Caption -->
+          <div class="mobile-info-overlay" onclick="event.stopPropagation()">
+            <div class="mobile-author">
+              <div class="author-avatar">
+                <img src="hpi_avatar.png" alt="HPI Pusat">
+              </div>
+              <span class="author-name">
+                hpipusat
+                <svg class="badge-verified-inline" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z"/></svg>
+              </span>
+              <button class="btn-follow">Ikuti</button>
+            </div>
+
+            <div class="mobile-caption">
+              <div id="caption-mobile" class="caption-clamp">
+                <strong>hpipusat</strong> Bayangkan. Hanya karena salah menerjemahkan satu kata, seseorang bisa lumpuh seumur hidup. Terdengar mengada-ada? Ini nyata!
+                <br><br>
+                Pada tahun 1980, keluarga pasien koma bernama Willie Ramirez mengatakan kepada dokter bahwa Willie sedang mengalami <em>intoxicado</em>. Juru bahasa secara spontan mengartikannya sebagai 'mabuk'. Padahal, dalam bahasa Spanyol, makna <em>intoxicado</em> adalah 'keracunan makanan'. Kesalahan alih bahasa ini berujung pada kelumpuhan permanen!
+                <br><br>
+                Layanan juru bahasa profesional tingkat konferensi &amp; komunitas menuntut kecermatan dan ketahanan fisik serta mental yang luar biasa.
+                <br><br>
+                📖 Baca artikel lengkapnya di <strong>laman Cerita, situs web hpi.or.id</strong>.
+                <br><br>
+                #HPI #Penerjemah #JuruBahasa #HimpunanPenerjemahIndonesia #MedicalInterpreting #PenerjemahTersumpah #TSN
+              </div>
+              <span id="btn-more-mobile" class="btn-more" onclick="toggleMobileCaption()">...selengkapnya</span>
+            </div>
+
+            <!-- Audio Ticker -->
+            <div class="mobile-ticker" onclick="toggleAllSound()">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+              <div style="width: 190px; overflow: hidden;">
+                <span class="ticker-text">hpipusat • Suara Asli - Kasus Willie Ramirez &amp; Intoxicado &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; hpipusat • Suara Asli - Kasus Willie Ramirez &amp; Intoxicado</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Video Progress Bar -->
+          <div class="reel-progress-bar">
+            <div id="progress-fill-mobile" class="reel-progress-fill"></div>
+          </div>
+
+          <!-- Instagram Bottom Navigation Bar -->
+          <div class="mobile-bottom-nav">
+            <button class="nav-icon-btn" aria-label="Beranda"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg></button>
+            <button class="nav-icon-btn" aria-label="Reels"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><polygon points="10 8 16 12 10 16 10 8" fill="#000"></polygon></svg></button>
+            <button class="nav-icon-btn" aria-label="Direct Messages"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></button>
+            <button class="nav-icon-btn" aria-label="Pencarian"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+            <div class="nav-avatar-mini"><img src="hpi_avatar.png" alt="Profile"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ==============================================
+         MODE 2: DESKTOP INSTAGRAM POST (MODAL VIEW)
+         ============================================== -->
+    <div id="wrapper-desktop" class="view-desktop">
+      <div class="ig-modal">
+        
+        <!-- Left Side: Video Media (Strict 9:16 Aspect Ratio) -->
+        <div class="modal-media" onclick="handleVideoTap(event, 'desktop')">
+          <video id="video-desktop" class="desktop-video" src="hpi_reel.webm" poster="poster.jpg" loop playsinline preload="auto"></video>
+          
+          <!-- Central Double-tap Heart for Desktop -->
+          <svg id="heart-pop-desktop" class="big-heart" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+
+          <!-- Audio Volume Toggle Button -->
+          <button id="volume-btn-desktop" class="volume-btn" onclick="toggleAllSound(); event.stopPropagation();" aria-label="Beralih audio">
+            <svg id="vol-icon-desktop" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          </button>
+        </div>
+
+        <!-- Right Side: Instagram Sidebar -->
+        <div class="modal-sidebar">
+          <!-- Header -->
+          <div class="sidebar-header">
+            <div class="header-user-wrap">
+              <div class="header-user-avatar">
+                <img src="hpi_avatar.png" alt="HPI Pusat">
+              </div>
+              <div class="header-user-info">
+                <span class="header-user-name">
+                  hpipusat
+                  <svg class="badge-verified-inline" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z"/></svg>
+                </span>
+                <span class="header-meta-tags">Konten AI &bull; Suara asli</span>
+              </div>
+            </div>
+            <button class="sidebar-dots-btn" aria-label="Pilihan">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle><circle cx="5" cy="12" r="2"></circle></svg>
+            </button>
+          </div>
+
+          <!-- Body / Comments -->
+          <div class="sidebar-body">
+            <!-- Author Main Caption -->
+            <div class="comment-row">
+              <div class="comment-avatar">
+                <img src="hpi_avatar.png" alt="HPI Pusat">
+              </div>
+              <div class="comment-content">
+                <div class="comment-text">
+                  <span class="comment-username">hpipusat</span>
+                  Bayangkan. Hanya karena salah menerjemahkan satu kata, seseorang bisa lumpuh seumur hidup. Terdengar mengada-ada? Ini nyata!
+                  <br><br>
+                  Pada tahun 1980, keluarga pasien koma bernama Willie Ramirez mengatakan kepada dokter bahwa Willie sedang mengalami <strong>intoxicado</strong>. Juru bahasa secara spontan mengartikannya sebagai 'mabuk'. Padahal, dalam bahasa Spanyol, makna <em>intoxicado</em> adalah 'kondisi tidak sehat setelah mengonsumsi sesuatu' atau keracunan makanan.
+                  <br><br>
+                  Kesalahan alih bahasa ini berujung pada kesalahan diagnosis fatal. Penanganan medisnya keliru dan Willie mengalami kelumpuhan permanen seumur hidup!
+                  <br><br>
+                  Layanan juru bahasa profesional, baik tingkat konferensi maupun komunitas, mungkin tampak sangat menggiurkan dengan honor belasan hingga puluhan juta rupiah per hari.
+                  <br><br>
+                  Namun, ingatlah hal yang dipertaruhkan sangatlah besar. Ketelitian tinggi menuntut ketahanan fisik serta mental yang luar biasa. Berani mengambil risiko menjadi seorang juru bahasa profesional?
+                  <br><br>
+                  #HPI #Penerjemah #JuruBahasa #HimpunanPenerjemahIndonesia #MedicalInterpreting #PenerjemahTersumpah #TSN #WillieRamirez
+                </div>
+                <div class="comment-meta">
+                  <span>4 hari lalu</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pinned Reference Comment -->
+            <div class="comment-row">
+              <div class="comment-avatar">
+                <img src="hpi_avatar.png" alt="HPI Pusat">
+              </div>
+              <div class="comment-content">
+                <div class="comment-text">
+                  <span class="comment-username">hpipusat</span>
+                  Referensi Resmi:
+                  <div class="comment-ref-box">
+                    &bull; Laman Cerita situs resmi HPI:<br>
+                    <a href="https://hpi.or.id" target="_blank" rel="noopener">https://www.hpi.or.id/</a><br>
+                    &bull; Artikel: <em>"Tantangan Menjadi Juru Bahasa Profesional"</em>
+                  </div>
+                </div>
+                <div class="comment-meta">
+                  <span>4 hari lalu</span>
+                  <span style="font-weight:600; cursor:pointer;">Balas</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Footer / Actions -->
+          <div class="sidebar-footer">
+            <!-- Simulated Creator Insights -->
+            <div class="insights-bar">
+              <span class="link-insights">Lihat insight</span>
+              <button class="btn-boost">Promosikan reel</button>
+            </div>
+
+            <!-- Post Action Icons -->
+            <div class="post-action-icons">
+              <div class="icons-left">
+                <!-- Like Button -->
+                <button id="like-btn-desktop" class="ig-icon-btn" onclick="toggleLike()" aria-label="Suka">
+                  <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </button>
+                <!-- Comment -->
+                <button class="ig-icon-btn" aria-label="Komentar">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                </button>
+                <!-- Share -->
+                <button class="ig-icon-btn" aria-label="Bagikan">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+              </div>
+              <!-- Bookmark -->
+              <button class="ig-icon-btn" aria-label="Simpan">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              </button>
+            </div>
+
+            <!-- Likes Count -->
+            <div class="likes-row">
+              <span class="likes-avatars-cluster">
+                <span class="cluster-avatar" style="background:#0095f6;"></span>
+                <span class="cluster-avatar" style="background:#d5702e;"></span>
+              </span>
+              Disukai oleh <strong>translexi.id</strong> dan <strong id="like-count-desktop">248 lainnya</strong>
+            </div>
+            <div class="timestamp-text">4 hari lalu</div>
+          </div>
+
+          <!-- Add Comment Bar -->
+          <div class="add-comment-row">
+            <button class="emoji-btn" aria-label="Tambahkan emoji">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+            </button>
+            <input type="text" class="comment-input" placeholder="Tambahkan komentar..." oninput="handleCommentInput(this)">
+            <button id="btn-post-comment" class="btn-post-comment">Kirim</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ==================== LOGIC & SCRIPTS ==================== -->
+<script>
+let currentMode = 'mobile';
+let isLiked = false;
+let isUnmuted = true; // User preference: default sound ON
+let lastTapTime = 0;
+
+// Read query params if any (e.g. ?mode=desktop)
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('mode') === 'desktop') {
+  currentMode = 'desktop';
+}
+
+const videoMobile = document.getElementById('video-mobile');
+const videoDesktop = document.getElementById('video-desktop');
+
+const likeBtnMobile = document.getElementById('like-btn-mobile');
+const likeBtnDesktop = document.getElementById('like-btn-desktop');
+const likeCountMobile = document.getElementById('like-count-mobile');
+const likeCountDesktop = document.getElementById('like-count-desktop');
+
+const heartPopMobile = document.getElementById('heart-pop-mobile');
+const heartPopDesktop = document.getElementById('heart-pop-desktop');
+const progressFillMobile = document.getElementById('progress-fill-mobile');
+
+function getActiveVideo() {
+  return currentMode === 'mobile' ? videoMobile : videoDesktop;
+}
+
+function getInactiveVideo() {
+  return currentMode === 'mobile' ? videoDesktop : videoMobile;
+}
+
+function switchMode(mode) {
+  currentMode = mode;
+  const wrapMobile = document.getElementById('wrapper-mobile');
+  const wrapDesktop = document.getElementById('wrapper-desktop');
+  const btnMobile = document.getElementById('btn-mode-mobile');
+  const btnDesktop = document.getElementById('btn-mode-desktop');
+
+  const activeVid = getActiveVideo();
+  const inactiveVid = getInactiveVideo();
+
+  // 1. Immediately pause and mute the inactive video
+  if (inactiveVid) {
+    inactiveVid.pause();
+    inactiveVid.muted = true;
+  }
+
+  // 2. Toggle UI visibility
+  if (mode === 'mobile') {
+    wrapMobile.style.display = 'flex';
+    wrapDesktop.style.display = 'none';
+    btnMobile.classList.add('active');
+    btnDesktop.classList.remove('active');
+    btnMobile.setAttribute('aria-selected', 'true');
+    btnDesktop.setAttribute('aria-selected', 'false');
+  } else {
+    wrapMobile.style.display = 'none';
+    wrapDesktop.style.display = 'flex';
+    btnMobile.classList.remove('active');
+    btnDesktop.classList.add('active');
+    btnMobile.setAttribute('aria-selected', 'false');
+    btnDesktop.setAttribute('aria-selected', 'true');
+  }
+
+  // 3. Sync time and start the active video
+  if (activeVid) {
+    if (inactiveVid && !isNaN(inactiveVid.currentTime)) {
+      activeVid.currentTime = inactiveVid.currentTime;
+    }
+    activeVid.muted = !isUnmuted;
+    activeVid.volume = 1.0;
+    activeVid.play().catch(() => {});
+  }
+
+  applySoundState();
+}
+
+function toggleAllSound() {
+  isUnmuted = !isUnmuted;
+  const activeVid = getActiveVideo();
+  const inactiveVid = getInactiveVideo();
+
+  if (activeVid) {
+    activeVid.muted = !isUnmuted;
+    activeVid.volume = 1.0;
+    if (activeVid.paused) {
+      activeVid.play().catch(() => {});
+    }
+  }
+  if (inactiveVid) {
+    inactiveVid.muted = true; // Always keep inactive video muted
+  }
+
+  applySoundState();
+}
+
+function applySoundState() {
+  const activeVid = getActiveVideo();
+  const actualMuted = activeVid ? activeVid.muted : !isUnmuted;
+
+  const iconSoundOn = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>';
+  const iconSoundOff = '<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line>';
+
+  // Desktop Volume Button
+  const volIconDesktop = document.getElementById('vol-icon-desktop');
+  if (volIconDesktop) {
+    volIconDesktop.innerHTML = actualMuted ? iconSoundOff : iconSoundOn;
+  }
+
+  // Mobile Top Left Sound Indicator
+  const mobileSoundIndicator = document.getElementById('sound-indicator-mobile');
+  const mobileSoundIcon = document.getElementById('mobile-sound-icon');
+  const mobileSoundText = document.getElementById('mobile-sound-text');
+  if (mobileSoundIndicator && mobileSoundIcon && mobileSoundText) {
+    if (actualMuted) {
+      mobileSoundIndicator.classList.add('is-muted');
+      mobileSoundIcon.innerHTML = iconSoundOff;
+      mobileSoundText.textContent = 'Ketuk untuk Suara';
+    } else {
+      mobileSoundIndicator.classList.remove('is-muted');
+      mobileSoundIcon.innerHTML = iconSoundOn;
+      mobileSoundText.textContent = 'Suara ON';
+    }
+  }
+
+  // Mobile Rail Sound Button
+  const railSoundIcon = document.getElementById('rail-sound-icon');
+  const railSoundText = document.getElementById('rail-sound-text');
+  if (railSoundIcon && railSoundText) {
+    railSoundIcon.innerHTML = actualMuted ? iconSoundOff : iconSoundOn;
+    railSoundText.textContent = actualMuted ? 'Bisu' : 'Suara';
+  }
+}
+
+function initPlayback() {
+  const activeVid = getActiveVideo();
+  const inactiveVid = getInactiveVideo();
+
+  if (inactiveVid) {
+    inactiveVid.pause();
+    inactiveVid.muted = true;
+  }
+
+  if (activeVid) {
+    activeVid.muted = false;
+    activeVid.volume = 1.0;
+    const p = activeVid.play();
+    if (p !== undefined) {
+      p.then(() => {
+        isUnmuted = true;
+        applySoundState();
+      }).catch(err => {
+        // Browser autoplay policy blocked unmuted sound
+        console.log('Unmuted autoplay prevented by browser policy, fallback to muted autoplay:', err);
+        activeVid.muted = true;
+        activeVid.play().catch(() => {});
+        applySoundState();
+
+        // Immediately unmute upon the very first user interaction anywhere
+        const gestureUnmute = () => {
+          isUnmuted = true;
+          activeVid.muted = false;
+          activeVid.volume = 1.0;
+          activeVid.play().catch(() => {});
+          applySoundState();
+          window.removeEventListener('pointerdown', gestureUnmute);
+          window.removeEventListener('click', gestureUnmute);
+          window.removeEventListener('touchstart', gestureUnmute);
+          window.removeEventListener('keydown', gestureUnmute);
+        };
+        window.addEventListener('pointerdown', gestureUnmute, { once: true });
+        window.addEventListener('click', gestureUnmute, { once: true });
+        window.addEventListener('touchstart', gestureUnmute, { once: true });
+        window.addEventListener('keydown', gestureUnmute, { once: true });
+      });
+    }
+  }
+}
+
+function toggleLike() {
+  isLiked = !isLiked;
+  if (isLiked) {
+    likeBtnMobile.classList.add('liked');
+    likeBtnDesktop.classList.add('liked');
+    likeCountMobile.textContent = '18,8 rb';
+    likeCountDesktop.textContent = '249 lainnya';
+  } else {
+    likeBtnMobile.classList.remove('liked');
+    likeBtnDesktop.classList.remove('liked');
+    likeCountMobile.textContent = '18,7 rb';
+    likeCountDesktop.textContent = '248 lainnya';
+  }
+}
+
+function handleVideoTap(event, view) {
+  const now = Date.now();
+  const timeDiff = now - lastTapTime;
+
+  if (timeDiff < 320 && timeDiff > 0) {
+    // Double tap -> Like with big heart burst
+    triggerHeartBurst(view);
+    if (!isLiked) {
+      toggleLike();
+    }
+  } else {
+    // Single tap -> If currently muted, unmute! If unmuted, toggle play/pause
+    const vid = view === 'mobile' ? videoMobile : videoDesktop;
+    if (vid.muted) {
+      isUnmuted = true;
+      vid.muted = false;
+      vid.volume = 1.0;
+      applySoundState();
+    } else {
+      if (vid.paused) {
+        vid.play();
+      } else {
+        vid.pause();
+      }
+    }
+  }
+  lastTapTime = now;
+}
+
+function triggerHeartBurst(view) {
+  const heart = view === 'mobile' ? heartPopMobile : heartPopDesktop;
+  heart.classList.remove('animate');
+  void heart.offsetWidth; // trigger reflow
+  heart.classList.add('animate');
+  setTimeout(() => heart.classList.remove('animate'), 900);
+}
+
+function toggleMobileCaption() {
+  const cap = document.getElementById('caption-mobile');
+  const btn = document.getElementById('btn-more-mobile');
+  if (cap.classList.contains('expanded')) {
+    cap.classList.remove('expanded');
+    btn.textContent = '...selengkapnya';
+  } else {
+    cap.classList.add('expanded');
+    btn.textContent = 'tutup';
+  }
+}
+
+function expandCaption() {
+  toggleMobileCaption();
+}
+
+function handleCommentInput(input) {
+  const btn = document.getElementById('btn-post-comment');
+  if (input.value.trim().length > 0) {
+    btn.classList.add('active');
+  } else {
+    btn.classList.remove('active');
+  }
+}
+
+// Track video timeline for mobile progress bar
+if (videoMobile) {
+  videoMobile.addEventListener('timeupdate', () => {
+    if (videoMobile.duration) {
+      const pct = (videoMobile.currentTime / videoMobile.duration) * 100;
+      progressFillMobile.style.width = pct + '%';
+    }
+  });
+}
+
+// Apply initial mode if set from URL
+if (currentMode === 'desktop') {
+  currentMode = 'mobile'; // set temporary to trigger switchMode
+  switchMode('desktop');
+} else {
+  initPlayback();
+}
+</script>
+
+</body>
+</html>
