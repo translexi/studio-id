@@ -205,10 +205,6 @@ em{font-style:italic}
   justify-content:space-between}
 .hero__lede{font-size:var(--t-lede);line-height:1.45;margin:0;color:var(--putih-70);text-wrap:pretty}
 .hero__aksi{display:flex;flex-wrap:wrap;gap:10px}
-.hero__takarir{position:absolute;right:var(--tepi);top:calc(var(--nav) + 12px);margin:0;
-  font-size:var(--t-mini);font-weight:500;color:var(--putih-70);max-width:22rem;text-align:right;
-  display:flex;align-items:center;gap:10px;justify-content:flex-end}
-.hero__takarir::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--bata);flex:none}
 
 /* Satu momen: kata judul menyala berurutan. Tanpa .js → tampil utuh. */
 .js .hero__judul[data-waktu] .kata{opacity:.28;transition:opacity .55s var(--ease)}
@@ -219,7 +215,6 @@ em{font-style:italic}
   .hero__isi{padding-top:16px;padding-bottom:64px}
   .hero__bawah{grid-template-columns:1fr}
   .hero__aksi .tombol{flex:1 1 auto}
-  .hero__takarir{position:static;width:100%;padding-inline:var(--tepi);justify-content:flex-start;text-align:left;margin-bottom:24px;max-width:none}
 }
 
 /* ---------- Bagian ---------- */
