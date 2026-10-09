@@ -78,12 +78,26 @@
     const suara = reel.querySelector('.reel__suara');
     const kanvas = reel.querySelector('.reel__cahaya');
     const cx = kanvas.getContext('2d');
+    const pudar = cx.createRadialGradient(32, 33, 0, 32, 33, 33);
+    pudar.addColorStop(.5, '#000'); pudar.addColorStop(1, 'rgba(0,0,0,0)');
     let bab = 0, olehLayar = false, terakhir = 0;
     v.removeAttribute('controls');
 
     const lukis = () => {
       if (v.readyState < 2) return;
-      try { cx.drawImage(v, 0, 0, kanvas.width, kanvas.height); reel.classList.add('reel--hidup'); } catch (e) {}
+      // Geometri sama dengan versi pertama (seluruh bingkai direntangkan ke seluruh
+      // area cahaya), tapi blur dihitung DI kanvas 64x66 ini, bukan filter CSS:
+      // filter CSS di area sebesar ini membuat 10-17% bingkai video tak sempat tampil.
+      const w = kanvas.width, h = kanvas.height;
+      try {
+        cx.globalCompositeOperation = 'source-over';
+        cx.clearRect(0, 0, w, h);
+        if ('filter' in cx) { cx.filter = 'blur(4px) saturate(1.7)'; cx.drawImage(v, -6, -6, w + 12, h + 12); cx.filter = 'none'; }
+        else { cx.drawImage(v, 0, 0, 8, 8); cx.drawImage(kanvas, 0, 0, 8, 8, 0, 0, w, h); }
+        cx.globalCompositeOperation = 'destination-in';
+        cx.fillStyle = pudar; cx.fillRect(0, 0, w, h);
+        reel.classList.add('reel--hidup');
+      } catch (e) {}
     };
     const segar = () => {
       const t = v.currentTime, d = v.duration || +reel.dataset.durasi;
@@ -101,7 +115,7 @@
     };
     const putaran = now => {
       segar();
-      if (now - terakhir > 140) { lukis(); terakhir = now; }
+      if (now - terakhir > 250) { lukis(); terakhir = now; }
       if (!v.paused) requestAnimationFrame(putaran);
     };
     const status = () => {
@@ -132,6 +146,19 @@
       if (!e.isIntersecting && !v.paused) { olehLayar = true; v.pause(); }
       else if (e.isIntersecting && olehLayar) { olehLayar = false; mainkan(); }
     }, { threshold: 0.25 }).observe(v);
+
+    // Jaring pengaman: jam berjalan tapi nol bingkai ter-decode (audio saja) → pindah
+    // ke sumber berikutnya. Pernah terjadi: Safari memutar WebM tanpa gambar.
+    const cadangan = () => {
+      const q = v.getVideoPlaybackQuality?.();
+      if (v.currentTime < 1.5 || !q) return;
+      v.removeEventListener('timeupdate', cadangan);
+      if (q.totalVideoFrames > 0) return;
+      const s = [...v.querySelectorAll('source')];
+      const lain = s[s.findIndex(x => x.src === v.currentSrc) + 1];
+      if (lain) { v.src = lain.src; mainkan(); }
+    };
+    v.addEventListener('timeupdate', cadangan);
 
     status(); segar();
     if (kurangiGerak || navigator.connection?.saveData) { v.addEventListener('loadeddata', lukis, { once: true }); }

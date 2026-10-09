@@ -219,22 +219,32 @@ em{font-style:italic}
 
 /* ---------- Layar: hero laman Video AI ----------
    Ruang putar. Latar malam, showreel vertikal di kanan, dan cahayanya tumpah ke
-   ruangan: kanvas 18×32 piksel yang dilukis dari video beberapa kali per detik,
-   diperbesar dan dikaburkan. Bukan video kedua, jadi nol unduhan tambahan. */
-.layar{--reel-h:clamp(520px,100svh - var(--nav) - 190px,800px);
+   ruangan: kanvas 64×66 piksel yang dilukis dari video empat kali per detik,
+   dikaburkan DI kanvas lalu cukup diperbesar. Tanpa filter CSS (lihat site.js). */
+.layar{--reel-h:clamp(520px,100svh - var(--nav) - 190px,760px);
   position:relative;background:var(--malam);color:var(--putih);overflow:clip;isolation:isolate;
   padding-block:calc(var(--nav) + clamp(24px,3.5vw,48px)) clamp(56px,7vw,104px)}
 .layar__grid{display:grid;grid-template-columns:minmax(0,1fr) auto;
   grid-template-areas:"jejak reel" "judul reel" "teks reel" "spek reel";
-  grid-template-rows:auto auto auto 1fr;column-gap:clamp(48px,8vw,136px)}
+  grid-template-rows:auto auto auto 1fr;column-gap:clamp(48px,7vw,112px)}
 /* Diawali .layar: aturan .kepala__jejak (abu untuk latar kertas) muncul lebih
    belakang di berkas ini dan akan menang bila spesifisitasnya setara. */
 .layar__jejak{grid-area:jejak}
 .layar .layar__jejak{color:var(--putih-45)}
 .layar .layar__jejak a:hover{color:var(--putih)}
 .layar .layar__jejak span[aria-hidden]{color:rgba(248,247,244,.24)}
-.layar__judul{grid-area:judul;font-size:clamp(2.75rem,1.2rem + 4vw,5.4rem);margin-bottom:clamp(24px,3vw,40px)}
-.layar__kalimat{display:block}
+/* Satu kalimat satu baris bila muat. Ukuran huruf dihitung dari lebar KOLOM
+   (container query), bukan lebar layar: lebar kolom berubah mengikuti tinggi layar
+   karena showreel di sebelahnya diukur dari tinggi. --n = panjang kalimat terpanjang
+   (ditulis template); 0,42em per huruf = batas atas Erode yang terukur (0,37–0,42). */
+.layar__judul{grid-area:judul;container-type:inline-size;font-size:clamp(2rem,1.2rem + 4vw,5.4rem);
+  margin-bottom:clamp(24px,3vw,40px)}
+/* Jarak huruf & kata ditulis DI kalimat: kalau diwarisi dari h1, em-nya dihitung
+   pada ukuran h1 (86px) lalu turun sebagai piksel ke kalimat 54px → spasi lenyap. */
+.layar__kalimat{display:block;letter-spacing:-.032em;word-spacing:-.03em}
+@supports (font-size:1cqi){
+  .layar__kalimat{font-size:clamp(2rem,calc(100cqi / (var(--n,20) * .42)),5.4rem)}
+}
 .layar__teks{grid-area:teks}
 .layar__lede{font-size:var(--t-lede);line-height:1.5;color:var(--putih-70);max-width:31rem;margin:0 0 32px}
 .layar__spek{grid-area:spek;align-self:end;margin-top:56px;max-width:34rem}
@@ -249,9 +259,9 @@ em{font-style:italic}
 .reel__layar{position:relative}
 .reel__video{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:18px;background:#11110f;
   box-shadow:0 0 0 1px rgba(248,247,244,.1),0 60px 120px -40px rgba(0,0,0,.85)}
-.reel__cahaya{position:absolute;z-index:-1;left:-60%;top:-14%;width:220%;height:128%;pointer-events:none;
-  filter:blur(64px) saturate(1.7);opacity:0;transition:opacity 1.6s var(--ease)}
-.reel--hidup .reel__cahaya{opacity:.6}
+.reel__cahaya{position:absolute;z-index:-1;left:-80%;top:-22%;width:260%;height:144%;pointer-events:none;
+  opacity:0;transition:opacity 1.6s var(--ease)}
+.reel--hidup .reel__cahaya{opacity:.7}
 
 .reel__kendali{display:none;margin-top:16px;position:relative}
 .js .reel__kendali{display:block}
@@ -289,19 +299,17 @@ em{font-style:italic}
 .reel--bersuara .reel__gelombang{opacity:1}
 .reel--disentuh:not(.reel--bersuara) .reel__gelombang{opacity:.35}
 
-@media (min-width:1180px){.layar__spek{grid-template-columns:repeat(4,minmax(0,1fr));max-width:none}}
+/* Tablet ke bawah: satu kolom. Dua kolom di 768px menyisakan ±330px untuk judul. */
 @media (max-width:900px){
-  .layar{--reel-h:clamp(440px,58svh,560px)}
-  .layar__grid{column-gap:40px}
-  .layar__judul{font-size:clamp(2.4rem,1rem + 4vw,3.6rem)}
-}
-@media (max-width:760px){
   .layar{padding-top:calc(var(--nav) + 20px)}
   .layar__grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"jejak" "judul" "reel" "teks" "spek";
     grid-template-rows:none}
-  .reel{width:min(100%,400px);margin-bottom:40px}
-  .reel__cahaya{left:-30%;width:160%}
+  .reel{width:min(100%,440px);margin-bottom:40px}
+  .reel__cahaya{left:-40%;width:180%}
   .layar__spek{margin-top:44px}
+}
+@media (max-width:760px){
+  .reel{width:min(100%,400px)}
   .layar__teks .tombol{width:100%}
 }
 
@@ -362,6 +370,20 @@ em{font-style:italic}
 .takarir__benar{text-decoration:underline rgba(248,247,244,.5) 1px;text-underline-offset:6px}
 .takarir__catatan{margin:28px 0 0;font-size:var(--t-mini);color:var(--putih-45)}
 @media (max-width:900px){.takarir__isi{grid-template-columns:1fr}}
+
+/* Rekam jejak di dalam bagian takarir: kepala + catatan di kiri, dua angka di kanan. */
+/* Kolom = kolom .takarir__isi di atasnya, supaya angka sejajar dengan panel demo. */
+.jejak{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:32px 96px;align-items:start;
+  margin-top:clamp(72px,9vw,128px);padding-top:clamp(28px,3vw,40px);border-top:1px solid var(--garis-gelap)}
+.jejak__judul{font-size:clamp(1.4rem,1.2rem + .7vw,1.9rem);font-weight:400;letter-spacing:-.022em;max-width:14ch}
+.jejak__catatan{margin:16px 0 0;font-size:var(--t-kecil);color:var(--putih-45);max-width:22rem}
+.jejak__angka{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+.jejak__sel{display:flex;flex-direction:column-reverse;justify-content:flex-end;gap:14px}
+.jejak__sel dd{font-family:var(--serif);font-size:clamp(3.75rem,2.2rem + 5vw,7.5rem);font-weight:330;line-height:.9;
+  letter-spacing:-.045em;font-variant-numeric:lining-nums proportional-nums;color:var(--putih)}
+.jejak__sel dt{font-size:var(--t-kecil);line-height:1.45;color:var(--putih-70);max-width:17rem}
+@media (max-width:900px){.jejak{grid-template-columns:1fr}}
+@media (max-width:420px){.jejak__angka{gap:20px}.jejak__sel dt{font-size:var(--t-mini)}}
 
 /* ---------- Bagian ---------- */
 .bagian{padding-block:var(--ruang)}
