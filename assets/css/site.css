@@ -217,6 +217,152 @@ em{font-style:italic}
   .hero__aksi .tombol{flex:1 1 auto}
 }
 
+/* ---------- Layar: hero laman Video AI ----------
+   Ruang putar. Latar malam, showreel vertikal di kanan, dan cahayanya tumpah ke
+   ruangan: kanvas 18×32 piksel yang dilukis dari video beberapa kali per detik,
+   diperbesar dan dikaburkan. Bukan video kedua, jadi nol unduhan tambahan. */
+.layar{--reel-h:clamp(520px,100svh - var(--nav) - 190px,800px);
+  position:relative;background:var(--malam);color:var(--putih);overflow:clip;isolation:isolate;
+  padding-block:calc(var(--nav) + clamp(24px,3.5vw,48px)) clamp(56px,7vw,104px)}
+.layar__grid{display:grid;grid-template-columns:minmax(0,1fr) auto;
+  grid-template-areas:"jejak reel" "judul reel" "teks reel" "spek reel";
+  grid-template-rows:auto auto auto 1fr;column-gap:clamp(48px,8vw,136px)}
+/* Diawali .layar: aturan .kepala__jejak (abu untuk latar kertas) muncul lebih
+   belakang di berkas ini dan akan menang bila spesifisitasnya setara. */
+.layar__jejak{grid-area:jejak}
+.layar .layar__jejak{color:var(--putih-45)}
+.layar .layar__jejak a:hover{color:var(--putih)}
+.layar .layar__jejak span[aria-hidden]{color:rgba(248,247,244,.24)}
+.layar__judul{grid-area:judul;font-size:clamp(2.75rem,1.2rem + 4vw,5.4rem);margin-bottom:clamp(24px,3vw,40px)}
+.layar__kalimat{display:block}
+.layar__teks{grid-area:teks}
+.layar__lede{font-size:var(--t-lede);line-height:1.5;color:var(--putih-70);max-width:31rem;margin:0 0 32px}
+.layar__spek{grid-area:spek;align-self:end;margin-top:56px;max-width:34rem}
+/* .spek.spek--gelap, bukan .spek--gelap: aturan dasar .spek ada lebih belakang. */
+.spek.spek--gelap{border-top-color:var(--garis-gelap)}
+.spek.spek--gelap dt{color:var(--putih-45)}
+.spek.spek--gelap dd{color:var(--putih)}
+
+.reel{grid-area:reel;margin:0;width:calc(var(--reel-h) * 9 / 16)}
+/* Sengaja TANPA isolation: kanvas z-index:-1 harus jatuh ke konteks .layar, di
+   bawah teks dan kendali. Dengan isolation, cahaya melapisi judul (cacat nyata). */
+.reel__layar{position:relative}
+.reel__video{width:100%;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:18px;background:#11110f;
+  box-shadow:0 0 0 1px rgba(248,247,244,.1),0 60px 120px -40px rgba(0,0,0,.85)}
+.reel__cahaya{position:absolute;z-index:-1;left:-60%;top:-14%;width:220%;height:128%;pointer-events:none;
+  filter:blur(64px) saturate(1.7);opacity:0;transition:opacity 1.6s var(--ease)}
+.reel--hidup .reel__cahaya{opacity:.6}
+
+.reel__kendali{display:none;margin-top:16px;position:relative}
+.js .reel__kendali{display:block}
+.reel__nama{margin:0;font-size:var(--t-mini);font-weight:500;line-height:1.35;color:var(--putih-70);
+  min-height:1.35em;text-wrap:balance}
+.reel__bab{display:flex;gap:5px;margin-top:2px}
+.reel__bab li{display:flex;flex-basis:0;min-width:0}
+.reel__segmen{flex:1;position:relative;height:30px;padding:0;border:0;background:none;cursor:pointer;border-radius:4px}
+.reel__segmen::before,.reel__isi{content:"";position:absolute;left:0;right:0;top:13px;height:3px;border-radius:2px}
+.reel__segmen::before{background:rgba(248,247,244,.2);transition:background-color .2s}
+.reel__segmen:hover::before{background:rgba(248,247,244,.38)}
+.reel__isi{display:block;background:var(--putih);transform-origin:left center;transform:scaleX(var(--isi,0))}
+.reel__segmen:focus-visible{outline-offset:2px}
+.reel__baris{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:6px}
+.reel__jeda{flex:none;width:44px;height:44px;margin-left:-2px;border-radius:50%;border:1px solid var(--garis-gelap);
+  background:none;color:var(--putih);display:grid;place-items:center;cursor:pointer;
+  transition:border-color .2s var(--ease),background-color .2s var(--ease)}
+.reel__jeda:hover{border-color:var(--putih-45);background:rgba(248,247,244,.06)}
+.reel__jeda svg{grid-area:1/1;width:15px;height:15px}
+.reel__ikon-jeda path{fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round}
+.reel__ikon-putar path{fill:currentColor}
+.reel__ikon-putar,.reel--diam .reel__ikon-jeda{display:none}
+.reel--diam .reel__ikon-putar{display:block}
+.reel__suara{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 18px 0 14px;
+  border-radius:var(--pil);border:1px solid var(--kertas);background:var(--kertas);color:var(--tinta);
+  font:500 var(--t-mini)/1.1 var(--sans);letter-spacing:.005em;cursor:pointer;white-space:nowrap;
+  transition:background-color .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
+.reel__suara:hover{background:#fff}
+.reel__suara svg{width:16px;height:16px;flex:none}
+.reel__speaker{fill:currentColor}
+.reel__gelombang{fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round}
+/* Sesudah ajakan pertama, tombol suara turun pangkat menjadi sakelar bergaris. */
+.reel--disentuh .reel__suara{background:none;color:var(--putih);border-color:rgba(248,247,244,.3)}
+.reel--disentuh .reel__suara:hover{border-color:var(--putih);background:rgba(248,247,244,.08)}
+.reel--bersuara .reel__gelombang{opacity:1}
+.reel--disentuh:not(.reel--bersuara) .reel__gelombang{opacity:.35}
+
+@media (min-width:1180px){.layar__spek{grid-template-columns:repeat(4,minmax(0,1fr));max-width:none}}
+@media (max-width:900px){
+  .layar{--reel-h:clamp(440px,58svh,560px)}
+  .layar__grid{column-gap:40px}
+  .layar__judul{font-size:clamp(2.4rem,1rem + 4vw,3.6rem)}
+}
+@media (max-width:760px){
+  .layar{padding-top:calc(var(--nav) + 20px)}
+  .layar__grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"jejak" "judul" "reel" "teks" "spek";
+    grid-template-rows:none}
+  .reel{width:min(100%,400px);margin-bottom:40px}
+  .reel__cahaya{left:-30%;width:160%}
+  .layar__spek{margin-top:44px}
+  .layar__teks .tombol{width:100%}
+}
+
+/* ---------- Kerja: indeks layanan laman video ---------- */
+.kerja__judul{margin-bottom:clamp(40px,5vw,72px)}
+.kerja__daftar{border-top:1px solid var(--garis-kuat)}
+.kerja__baris{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:14px 64px;
+  padding:clamp(28px,3.4vw,44px) 0;border-bottom:1px solid var(--garis)}
+.kerja__nama{font-size:clamp(1.75rem,1.25rem + 1.8vw,2.75rem);font-weight:380;line-height:1.04;
+  letter-spacing:-.03em;word-spacing:-.05em}
+.kerja__isi p{margin:0;color:var(--abu);max-width:36rem}
+.kerja__termasuk{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.kerja__termasuk li{font-size:var(--t-mini);font-weight:500;line-height:1.2;color:var(--tinta-2);
+  padding:7px 13px;border-radius:var(--pil);background:var(--kertas-2)}
+@media (max-width:760px){.kerja__baris{grid-template-columns:1fr}}
+
+/* ---------- Banding: tiga pilihan, kolom kami di latar malam ---------- */
+.banding__tabel{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed}
+.banding__tabel th,.banding__tabel td{padding:20px 24px;text-align:left;vertical-align:top;
+  border-bottom:1px solid var(--garis-kuat);font-size:var(--t-kecil);line-height:1.45;font-weight:400}
+.banding__sudut{width:22%;border-bottom-color:var(--tinta)}
+.banding__tabel thead .banding__sudut{border-bottom-color:var(--tinta)}
+.banding__tabel thead th{font-family:var(--serif);font-weight:420;font-size:clamp(1.2rem,1.05rem + .5vw,1.55rem);
+  letter-spacing:-.02em;line-height:1.15;padding-top:26px;padding-bottom:22px;border-bottom-color:var(--tinta)}
+.banding__tabel tbody th{font-weight:500;color:var(--tinta);padding-left:0}
+.banding__tabel td{color:var(--abu)}
+.banding__tabel .banding__kami{background:var(--malam);color:var(--putih);border-bottom-color:var(--garis-gelap)}
+.banding__tabel thead .banding__kami{border-radius:var(--r) var(--r) 0 0;box-shadow:inset 0 2px 0 var(--bata)}
+.banding__tabel tbody tr:last-child>*{border-bottom:0}
+.banding__tabel tbody tr:last-child .banding__kami{border-radius:0 0 var(--r) var(--r)}
+@media (max-width:760px){
+  .banding__tabel,.banding__tabel tbody,.banding__tabel tr,.banding__tabel th,.banding__tabel td{display:block;width:auto}
+  .banding__tabel thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+  .banding__tabel tbody tr{padding:26px 0 22px;border-top:1px solid var(--garis-kuat)}
+  .banding__tabel tbody tr:first-child{border-top-color:var(--tinta)}
+  .banding__tabel tbody th{font-family:var(--serif);font-size:1.3rem;font-weight:430;letter-spacing:-.016em;
+    padding:0 0 10px;border:0}
+  .banding__tabel td{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:4px 14px;padding:12px 0;border:0;
+    border-top:1px solid var(--garis)}
+  .banding__tabel td::before{content:attr(data-kolom);font-size:var(--t-mini);font-weight:500;color:var(--abu);line-height:1.5}
+  .banding__tabel td.banding__kami{padding:14px 16px;margin:6px 0;border:0;border-radius:var(--r)}
+  .banding__tabel td.banding__kami+td{border-top:0}
+  .banding__tabel td.banding__kami::before{color:var(--putih-45)}
+  .banding__tabel tbody tr:last-child .banding__kami{border-radius:var(--r)}
+}
+
+/* ---------- Takarir: demo subtitle (laman video) ---------- */
+.takarir__isi{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:48px 96px;align-items:center}
+.takarir__kiri .sorot__teks{margin-top:28px}
+.takarir__demo{padding:clamp(24px,3vw,44px);border-radius:var(--r);background:var(--malam-2);
+  border:1px solid var(--garis-gelap)}
+.takarir__label{font-size:var(--t-mini);font-weight:500;color:var(--putih-45);margin:0 0 14px}
+.takarir__label--kami{margin-top:36px}
+.takarir__baris{margin:0;text-align:center;font-family:var(--sans);font-weight:500;
+  font-size:clamp(1.05rem,.95rem + .5vw,1.35rem);line-height:1.5}
+.takarir__baris{background:rgba(0,0,0,.5);color:#fff;padding:.5em .9em;border-radius:6px;text-wrap:balance}
+.takarir__salah{text-decoration:underline wavy var(--bata) 1.5px;text-underline-offset:6px}
+.takarir__benar{text-decoration:underline rgba(248,247,244,.5) 1px;text-underline-offset:6px}
+.takarir__catatan{margin:28px 0 0;font-size:var(--t-mini);color:var(--putih-45)}
+@media (max-width:900px){.takarir__isi{grid-template-columns:1fr}}
+
 /* ---------- Bagian ---------- */
 .bagian{padding-block:var(--ruang)}
 .bagian--malam{background:var(--malam);color:var(--putih)}
